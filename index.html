@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f6f5c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Зоологія">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Зоологія — особистий репетитор</title>
+<style>
+:root{--bg:#eef2ec;--cd:#fbfcfa;--tx:#16261f;--mu:#5d6b63;--ac:#1f6f5c;--ac2:#dcebe4;--am:#d9a520;--bad:#b3392b;--bd:#d3dcd5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a15;--cd:#17261f;--tx:#e6efe9;--mu:#9bb0a4;--ac:#5cc4a6;--ac2:#1f3a30;--am:#e8b93c;--bad:#ff8272;--bd:#2a4036}}
+:root[data-theme="dark"]{--bg:#0f1a15;--cd:#17261f;--tx:#e6efe9;--mu:#9bb0a4;--ac:#5cc4a6;--ac2:#1f3a30;--am:#e8b93c;--bad:#ff8272;--bd:#2a4036}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+#app{max-width:640px;margin:0 auto;padding:16px 16px 96px}
+h1,h2,h3{font-family:"Iowan Old Style",Georgia,"Times New Roman",serif;margin:0 0 8px;line-height:1.25}
+h1{font-size:26px}h2{font-size:21px}h3{font-size:17px}
+.c{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:14px 16px;margin:0 0 12px}
+.mu{color:var(--mu);font-size:14px}
+.b{display:block;width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--ac);background:var(--ac);color:var(--bg);font:600 16px system-ui;margin:8px 0;cursor:pointer}
+.b.s{background:transparent;color:var(--ac)}
+.b:disabled{opacity:.45}
+.o{display:block;width:100%;text-align:left;padding:12px 14px;margin:8px 0;border-radius:12px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);font:16px system-ui;cursor:pointer}
+.o.on{border-color:var(--ac);background:var(--ac2)}
+.o.ok{border-color:var(--ac);background:var(--ac2)}
+.o.no{border-color:var(--bad)}
+.bar{height:10px;border-radius:5px;background:var(--bd);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--am)}
+.tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:99px;background:var(--ac2);color:var(--ac);margin-right:6px}
+.fb{border-left:4px solid var(--ac);padding:8px 12px;margin:12px 0;background:var(--ac2);border-radius:0 10px 10px 0}
+.fb.bad{border-color:var(--bad)}
+input[type=text],textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--cd);color:var(--tx);font:16px system-ui}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--cd);border-top:1px solid var(--bd);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+nav button{flex:1;border:0;background:none;color:var(--mu);font:13px system-ui;padding:8px 2px;cursor:pointer}
+nav button.on{color:var(--ac);font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:4px 0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+:focus-visible{outline:3px solid var(--am);outline-offset:2px}
+</style></head><body><div id="app"></div><nav id="nav"></nav>
+<script>
+const P=[[1,"Одноклітинні гетеротрофні еукаріоти"],[2,"Губки та справжні багатоклітинні"],[3,"Жалкі (Кнідарії)"],[4,"Плоскі черви"],[5,"Круглі черви"],[6,"Кільчасті черви"],[7,"Молюски"],[8,"Членистоногі: будова, ракоподібні, павукоподібні"],[9,"Комахи"],[10,"Хордові та риби"],[11,"Амфібії та рептилії"],[12,"Птахи"],[13,"Ссавці"],[14,"Фізіологія тварин"],[15,"Поведінка тварин"],[16,"Порівняльна шпаргалка + розширений тест"]];
+const R={1:{th:[
+["Що це за група","Збірна група <b>неспоріднених</b> одноклітинних еукаріотів без клітинної стінки, з гетеротрофним живленням і активним рухом (амебоїдним, джгутиковим, війковим)."],
+["Будова клітини","Тіло — одна клітина, що виконує всі функції (2–150 мкм). Форма <b>мінлива</b> (амеби) або <b>стала</b> (інфузорії — завдяки пелікулі). Цитоплазма: <b>ектоплазма</b> — щільний зовнішній шар, <b>ендоплазма</b> — внутрішня, з органелами. Спеціальні органели: травні й скоротливі вакуолі, порошиця, клітинний рот, вічко, органели руху. В інфузорій і форамініфер два ядра: <b>вегетативне</b> регулює синтез речовин, <b>генеративне</b> зберігає спадкову інформацію."],
+["Життєдіяльність","Рух: псевдоніжки, джгутики, війки. Живлення гетеротрофне (сапротрофи, паразити, мутуалісти), фагоцитоз. Травлення <b>внутрішньоклітинне</b> (травна вакуоля + лізосоми). Дихання аеробне, через поверхню. Виділення: дифузія, скоротливі вакуолі (прісноводні), порошиця (інфузорії). Подразливість — <b>таксиси</b>. Розмноження нестатеве (поділ, шизогонія, брунькування) і статеві процеси: <b>копуляція</b> (злиття клітин → зигота) та <b>кон’югація</b> (обмін ядрами через цитоплазматичні містки). Цисти — тимчасова стадія із щільною оболонкою."],
+["Паразити людини","Амеба дизентерійна → амебіаз (кишечник); трипаносома (муха цеце) → африканська сонна хвороба; плазмодій (малярійний комар) → малярія (еритроцити); лейшманії (москіти) → шкірний лейшманіоз. Профілактика: гігієна, кип’ятіння води, знищення комарів, захист від укусів."],
+["Цикл малярійного плазмодія","Самка комара (<b>остаточний хазяїн</b>) вводить спорозоїти → у гепатоцитах вони діляться (мерозоїти) → в еритроцитах: трофозоїт → шизонт → розрив клітини (напад лихоманки) → нові мерозоїти; частина стає гаметоцитами → комар ковтає їх із кров’ю, у його кишці гамети зливаються, утворюються ооцисти й нові спорозоїти в слинних залозах.<br><i>Лайфхак з файлу: напад збігається з масовим розривом еритроцитів — тому напади циклічні.</i>"]],
+key:["Ектоплазма — щільна зовнішня, ендоплазма — внутрішня, з органелами","Вегетативне ядро — синтез речовин; генеративне — спадкова інформація","Рух: псевдоніжки, джгутики, війки; подразливість — таксиси","Травлення внутрішньоклітинне: травна вакуоля + лізосоми","Копуляція — злиття клітин; кон’югація — обмін ядрами через містки","Комар — остаточний хазяїн плазмодія; напади — через розрив еритроцитів","Значення: самоочищення водойм, біоіндикатори (амеба протей, евглена); форамініфери → крейда, вапняк; радіолярії → яшма, опал"],
+ex:"<b>Додатковий приклад (не з файлу): визначаємо збудника за ознаками.</b><ol><li>Ознаки: пропасниця, недокрів’я, ураження печінки й селезінки.</li><li>Де живе збудник? Таблиця з файлу: хвороби з такими ознаками пов’язані з еритроцитами.</li><li>Це малярійний плазмодій, хвороба — малярія, переносник — малярійний комар.</li><li>Перевірка: кривавий пронос і виразки в кишечнику вказували б на амебу дизентерійну, а не на плазмодія.</li></ol>",
+sum:["Одна клітина виконує всі функції; є спеціальні органели (вакуолі, порошиця, клітинний рот).","Два ядра в інфузорій: вегетативне (синтез) і генеративне (спадковість).","Статеві процеси: копуляція й кон’югація — це різні речі.","Малярія: комар — остаточний хазяїн, напади циклічні через розрив еритроцитів."]}};
+const Q=[
+{id:"a1",d:1,l:1,k:"single",src:1,q:"Що таке ектоплазма?",o:["Щільний зовнішній шар цитоплазми","Внутрішній шар цитоплазми з органелами","Клітинна стінка","Оболонка цисти"],a:0,ex:"Цитоплазма має два шари: ектоплазма — щільний зовнішній, ендоплазма — внутрішня, з органелами.",alt:{k:"single",q:"Який шар цитоплазми містить органели?",o:["Ендоплазма","Ектоплазма"],a:0,ex:"Е-н-до — «всередині»: ендоплазма внутрішня й містить органели."}},
+{id:"a2",d:1,l:1,k:"tf",src:1,q:"Вегетативне ядро інфузорії зберігає спадкову інформацію.",a:false,ex:"Навпаки: вегетативне ядро регулює синтез речовин, а спадкову інформацію зберігає генеративне.",alt:{k:"single",q:"Яке ядро інфузорії регулює синтез речовин?",o:["Вегетативне","Генеративне"],a:0,ex:"Вегетативне «працює» (синтез), генеративне — «архів» (спадковість)."}},
+{id:"a3",d:1,l:1,k:"multi",src:1,q:"Оберіть усі органели руху одноклітинних.",o:["Псевдоніжки","Війки","Джгутики","Трахеї","Мальпігієві судини"],a:[0,1,2],ex:"Рух: псевдоніжки (амебоїдний), джгутики, війки. Трахеї й мальпігієві судини — членистоногих."},
+{id:"a4",d:1,l:1,k:"fill",src:1,q:"Травлення в одноклітинних (травна вакуоля + лізосоми) — ______ (одним словом).",a:["внутрішньоклітинне"],ex:"Травлення внутрішньоклітинне: їжа перетравлюється всередині клітини в травній вакуолі."},
+{id:"a5",d:1,l:1,k:"single",src:1,q:"Завдяки чому інфузорії мають сталу форму тіла?",o:["Пелікулі","Псевдоніжкам","Вапняковій черепашці","Цисті"],a:0,ex:"Стала форма інфузорій забезпечується пелікулою, а в амеб форма мінлива."},
+{id:"a6",d:1,l:2,k:"single",src:1,q:"Хто остаточний хазяїн малярійного плазмодія?",o:["Самка малярійного комара","Людина","Муха цеце","Москіт"],a:0,ex:"У комара відбувається статевий процес — тому він остаточний хазяїн. Муха цеце — переносник трипаносоми, москіти — лейшманій.",alt:{k:"single",q:"Де відбувається статеве розмноження плазмодія?",o:["У кишці комара","В еритроцитах людини","У печінці людини","У слині людини"],a:0,ex:"Гаметоцити потрапляють до комара з кров’ю й зливаються в його кишці."}},
+{id:"a7",d:1,l:2,k:"single",src:1,q:"Чому напади лихоманки при малярії циклічні?",o:["Напад збігається з масовим розривом еритроцитів","Плазмодій спить у печінці між нападами","Комар кусає раз на кілька днів","Утворюється циста"],a:0,ex:"Еритроцити з шизонтами розриваються майже одночасно — це напад; потім цикл повторюється."},
+{id:"a8",d:1,l:2,k:"order",src:2,q:"Розташуй етапи циклу плазмодія в правильному порядку (тисни по черзі).",it:["Самка комара вводить спорозоїти","Спорозоїти діляться в гепатоцитах → мерозоїти","В еритроцитах: трофозоїт → шизонт → розрив клітини","Гаметоцити з кров’ю потрапляють до комара"],ex:"Порядок: спорозоїти → гепатоцити → еритроцити (напад) → гаметоцити в комара."},
+{id:"a9",d:1,l:3,k:"single",src:2,q:"Знайди помилку: «Амеба дизентерійна живе в еритроцитах і викликає малярію».",o:["Вона живе в кишечнику й викликає амебіаз","Помилки немає","Малярію викликає трипаносома","Амеба викликає сонну хворобу"],a:0,ex:"Амеба дизентерійна — кишечник, амебіаз (кривавий пронос, виразки). Малярія — плазмодій в еритроцитах."},
+{id:"a10",d:1,l:3,k:"open",src:2,q:"Своїми словами: чим копуляція відрізняється від кон’югації?",m:"Копуляція — злиття двох клітин із утворенням зиготи. Кон’югація — обмін ядрами через цитоплазматичні містки.",ex:"Звір свою відповідь із зразком: головне — «злиття клітин → зигота» проти «обмін ядрами через містки»."}];
+const DAY=864e5,GAP=[0,1,3,7,14,30],TY={single:"Один варіант",tf:"Вірно/невірно",multi:"Кілька відповідей",fill:"Пропуск",order:"Послідовність",open:"Відкрите"};
+let S={d:{},log:[]};try{S=JSON.parse(localStorage.getItem("zoo")||"")||S}catch(e){}
+const save=()=>{try{localStorage.setItem("zoo",JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),app=$("#app"),shuf=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]),norm=s=>s.toLowerCase().replace(/[^а-яіїєґ]/g,"");
+let tab="home";const T=[["home","Головна"],["plan","План"],["prac","Практика"],["rev","Повтор"],["stat","Успіхи"]];
+function nav(){$("#nav").innerHTML=T.map(t=>`<button class="${t[0]==tab?"on":""}" onclick="go('${t[0]}')">${t[1]}</button>`).join("")}
+function go(t){tab=t;nav();app.innerHTML=V[t]();scrollTo(0,0)}
+const stName={new:"Не розпочато",prog:"В процесі",rev:"На повторенні",done:"Освоєно"};
+const stOf=id=>(S.d[id]||{st:"new"}).st;
+const due=()=>P.filter(p=>{const x=S.d[p[0]];return x&&x.st=="rev"&&x.due<=Date.now()&&R[p[0]]}).map(p=>p[0]);
+function ask(l,n){return shuf(Q.filter(q=>l.includes(q.d))).slice(0,n)}
+const V={
+home(){const w={new:0,prog:.25,rev:.6,done:1},pr=Math.round(100*P.reduce((s,p)=>s+w[stOf(p[0])],0)/P.length),cur=P.find(p=>["new","prog"].includes(stOf(p[0])))||P[0],dn=due().length;
+return `<h1>Великий конспект з зоології</h1><p class="mu">Від одноклітинних до ссавців · 16 занять по 15–25 хвилин</p>
+<div class="c"><div class="row"><b>Загальний прогрес</b><span>${pr}%</span></div><div class="bar"><i style="width:${pr}%"></i></div><p class="mu" style="margin:8px 0 0">Заняття ${cur[0]} з ${P.length}: ${cur[1]}</p></div>
+<button class="b" onclick="openDay(${cur[0]})">Продовжити навчання</button>
+${dn?`<button class="b s" onclick="startRev()">Повторення: ${dn} ${dn==1?"тема":"тем"} на сьогодні</button>`:""}
+<div class="c mu">Завдання позначені: <span class="tag">з файлу</span> — прямо за конспектом; <span class="tag">додатково</span> — нові приклади за тими самими принципами. Прогрес зберігається в цьому браузері.</div>`},
+plan(){return `<h2>План навчання</h2>`+P.map(p=>`<div class="c row" onclick="openDay(${p[0]})" style="cursor:pointer"><div><b>${p[0]}. ${p[1]}</b><div class="mu">${R[p[0]]?stName[stOf(p[0])]:"Буде додано в чаті"}</div></div><span class="tag">${R[p[0]]?stName[stOf(p[0])]:"Скоро"}</span></div>`).join("")+`<div class="c mu">Підсумковий екзамен відкриється після всіх 16 занять. Тема стає «Освоєною» після стабільних результатів (≥80%) у повторенні через 1, 3 і 7 днів.</div>`},
+prac(){return `<h2>Практика</h2><p class="mu">Змішані завдання за пройденими темами. Обери рівень.</p>`+[[1,"Рівень 1 — базовий"],[2,"Рівень 2 — середній"],[3,"Рівень 3 — продвинутий"]].map(l=>`<button class="b s" onclick="startPrac(${l[0]})">${l[1]}</button>`).join("")+`<button class="b" onclick="startPrac(0)">Змішана практика</button>`},
+rev(){const d=due();return `<h2>Повторення</h2>`+(d.length?`<p>Пора повторити: ${d.map(i=>P[i-1][1]).join("; ")}.</p><button class="b" onclick="startRev()">Почати повторення</button>`:`<div class="c">Сьогодні повторювати нічого. Після кожного заняття теми повертаються через 1, 3, 7, 14 і 30 днів. Помилки скорочують інтервал.</div>`)+`<div class="c mu">Графік: одразу → 1 день → 3 → 7 → 14 → 30. Якщо результат нижче 80%, тема повертається наступного дня.</div>`},
+stat(){const L=S.log;if(!L.length)return `<h2>Успіхи</h2><div class="c">Поки немає даних. Пройди перше заняття — тут з’являться результати, слабкі місця й рекомендації.</div>`;
+const pc=a=>a.length?Math.round(100*a.filter(x=>x.ok).length/a.length):0,row=(n,a)=>a.length?`<div style="margin:8px 0"><div class="row"><span>${n}</span><span>${pc(a)}% · ${a.length}</span></div><div class="bar"><i style="width:${pc(a)}%"></i></div></div>`:"";
+const er={};L.filter(x=>!x.ok).forEach(x=>{const id=x.id.replace(/r$/,"");er[id]=(er[id]||0)+1});const top=Object.entries(er).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([id,n])=>{const q=Q.find(z=>z.id==id);return q?`<li>${q.q} <span class="mu">(помилок: ${n})</span></li>`:""}).join("");
+return `<h2>Успіхи</h2><div class="c"><b>${pc(L)}% правильних</b> · виконано завдань: ${L.length}</div><div class="c"><h3>За рівнями</h3>${[1,2,3].map(l=>row("Рівень "+l,L.filter(x=>x.l==l))).join("")}</div><div class="c"><h3>За форматами</h3>${Object.keys(TY).map(k=>row(TY[k],L.filter(x=>x.k==k))).join("")}</div>${top?`<div class="c"><h3>Повторювані помилки</h3><ul>${top}</ul></div>`:""}`}};
+function openDay(id){if(!R[id]){app.innerHTML=`<h2>${id}. ${P[id-1][1]}</h2><div class="c">Це заняття ще не додано в застосунок. Напиши в чаті «заняття ${id}» — і я додам теорію, приклади й тести за цим розділом файлу.</div><button class="b s" onclick="go('plan')">До плану</button>`;return}lesson(id,0)}
+function lesson(id,s,res){const L=R[id],t=P[id-1][1],pg=`<p class="mu">Заняття ${id} · крок ${s+1} з 5</p><h2>${t}</h2>`,nx=`<button class="b" onclick="lesson(${id},${s+1})">Далі</button>`;let h;
+if(!S.d[id])S.d[id]={st:"prog",stage:0};
+if(s==0)h=L.th.map(x=>`<div class="c"><h3>${x[0]}</h3><p style="margin:0">${x[1]}</p></div>`).join("")+nx;
+if(s==1)h=`<div class="c"><h3>Ключові знання</h3><ul>${L.key.map(k=>`<li>${k}</li>`).join("")}</ul></div>`+nx;
+if(s==2)h=`<div class="c">${L.ex}</div>`+nx;
+if(s==3)h=`<div class="c"><h3>Тест по темі</h3><p>10 завдань трьох рівнів: від визначень до пошуку помилок. Питання йдуть по одному; правильну відповідь я покажу після твоєї.</p></div><button class="b" onclick="runLesson(${id})">Почати тест</button>`;
+if(s==4){const p=res.pct;h=`<div class="c"><h3>Результат: ${p}%</h3><p>Правильно ${res.ok} з ${res.n}.</p><p>${p>=80?"Тема йде на повторення: завтра я поверну кілька питань.":"Результат нижче 80%: завтра повторимо цю тему, а пропуски розберемо ще раз."}</p></div><div class="c"><h3>Підсумок заняття</h3><ul>${L.sum.map(k=>`<li>${k}</li>`).join("")}</ul></div><button class="b" onclick="go('home')">На головну</button>`}
+app.innerHTML=pg+h;scrollTo(0,0)}
+function runLesson(id){run(Q.filter(q=>q.d==id),r=>{const p=Math.round(100*r.ok/r.n),x=S.d[id];x.last=p;if(p>=80){x.st="rev";x.stage=1;x.due=Date.now()+DAY}else{x.st="prog";x.stage=0}save();lesson(id,4,{...r,pct:p})})}
+function startRev(){const d=due();if(!d.length)return go("rev");run(ask(d,6),r=>{const p=r.ok/r.n;d.forEach(id=>{const x=S.d[id];if(p>=.8){x.stage++;if(x.stage>=4)x.st="done";else x.due=Date.now()+GAP[x.stage]*DAY}else{x.stage=1;x.due=Date.now()+DAY}});save();fin("Повторення завершено",r,p>=.8?"Інтервал збільшено.":"Тема повернеться завтра.")})}
+function startPrac(l){const a=Q.filter(q=>S.d[q.d]&&(!l||q.l==l));if(!a.length){app.innerHTML=`<h2>Практика</h2><div class="c">Спочатку розпочни заняття 1: практика бере завдання з пройдених тем.</div>`;return}run(shuf(a).slice(0,8),r=>fin("Практику завершено",r,""))}
+function fin(t,r,m){app.innerHTML=`<h2>${t}</h2><div class="c"><h3>${Math.round(100*r.ok/r.n)}% правильних</h3><p>${r.ok} з ${r.n}. ${m}</p></div><button class="b" onclick="go('home')">На головну</button>`}
+function run(list,end){let q=[...list],i=0,ok=0,n=0;
+function show(){if(i>=q.length)return end({ok,n});const x=q[i];let sel=[],ord=[],it=x.it?shuf(x.it.map((t,j)=>[t,j])):0;
+const hd=`<p class="mu">Питання ${i+1} з ${q.length}</p><div class="c"><span class="tag">${x.src==1?"з файлу":"додатково"}</span><span class="tag">Рівень ${x.l}</span><span class="tag">${TY[x.k]}</span><h3 style="margin-top:10px">${x.q}</h3>`;
+function ui(){let b="";
+if(x.k=="single"||x.k=="tf"){const o=x.k=="tf"?["Вірно","Невірно"]:x.o;b=o.map((t,j)=>`<button class="o" onclick="A(${j})">${t}</button>`).join("")}
+if(x.k=="multi")b=x.o.map((t,j)=>`<button class="o ${sel.includes(j)?"on":""}" onclick="M(${j})">${t}</button>`).join("")+`<button class="b" ${sel.length?"":"disabled"} onclick="A()">Перевірити</button>`;
+if(x.k=="fill")b=`<input type="text" id="fi" autocomplete="off"><button class="b" onclick="A()">Перевірити</button>`;
+if(x.k=="order")b=it.map(([t,j])=>`<button class="o ${ord.includes(j)?"on":""}" onclick="M(${j})">${ord.includes(j)?ord.indexOf(j)+1+". ":""}${t}</button>`).join("")+`<button class="b" ${ord.length==it.length?"":"disabled"} onclick="A()">Перевірити</button><button class="b s" onclick="ord_reset()">Скинути</button>`;
+if(x.k=="open")b=`<textarea id="op" rows="4" placeholder="Сформулюй відповідь своїми словами"></textarea><button class="b" onclick="A()">Показати зразок</button>`;
+app.innerHTML=hd+b+`</div>`}
+window.M=j=>{if(x.k=="order"){if(!ord.includes(j))ord.push(j)}else sel=sel.includes(j)?sel.filter(z=>z!=j):[...sel,j];ui()};window.ord_reset=()=>{ord=[];ui()};
+window.A=j=>{let c,msg="";
+if(x.k=="open"){const m=x.m;app.innerHTML=hd+`<div class="fb"><b>Зразок:</b> ${m}</div><p>Наскільки твоя відповідь збіглася за змістом?</p><button class="b" onclick="done(1)">Збіглася</button><button class="b s" onclick="done(0)">Частково або ні</button></div>`;return}
+if(x.k=="single")c=j==x.a;if(x.k=="tf")c=(j==0)==x.a;if(x.k=="multi")c=sel.length==x.a.length&&x.a.every(z=>sel.includes(z));
+if(x.k=="fill")c=x.a.some(a=>norm($("#fi").value)==norm(a));if(x.k=="order")c=ord.every((z,p)=>z==p);
+done(c,j)};
+window.done=(c,j)=>{c=!!c;n++;if(c)ok++;S.log.push({t:Date.now(),d:x.d,id:x.id,k:x.k,l:x.l,ok:+c});S.log=S.log.slice(-600);save();
+if(!c&&x.alt&&!x.retry)q.splice(Math.min(i+2,q.length),0,{...x.alt,id:x.id+"r",d:x.d,l:x.l,src:2,retry:1});
+let sh="";if(x.k=="single"||x.k=="tf"){const o=x.k=="tf"?["Вірно","Невірно"]:x.o,a=x.k=="tf"?(x.a?0:1):x.a;sh=o.map((t,z)=>`<div class="o ${z==a?"ok":z==j?"no":""}">${t}</div>`).join("")}
+if(x.k=="multi")sh=x.o.map((t,z)=>`<div class="o ${x.a.includes(z)?"ok":sel.includes(z)?"no":""}">${t}</div>`).join("");
+if(x.k=="fill")sh=`<div class="fb">Правильна відповідь: <b>${x.a[0]}</b></div>`;
+if(x.k=="order")sh=`<div class="fb">Правильний порядок:<ol>${x.it.map(t=>`<li>${t}</li>`).join("")}</ol></div>`;
+const rt=!c&&x.alt&&!x.retry?"<p>Розберемо по-іншому: за кілька питань я поверну схожу задачу з іншого боку.</p>":"";
+app.innerHTML=hd+sh+`</div><div class="fb ${c?"":"bad"}"><b>${c?"Правильно":"Неправильно"}.</b> ${x.ex}${rt}</div><button class="b" onclick="nxt()">Далі</button>`;scrollTo(0,0)};
+window.nxt=()=>{i++;show()};ui();scrollTo(0,0)}
+show()}
+go("home");
+if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
+</script></body></html>
